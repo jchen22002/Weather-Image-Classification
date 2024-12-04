@@ -11,14 +11,14 @@ app = Flask(__name__)
 resnet_model = load_model('resnet50_model.h5')
 mobilenet_model = load_model('mobilenet_model.h5')
 
-# Define the class labels (update these with your actual class names)
+# Define the class labels 
 class_labels = ['dew', 'fog/smog', 'frost', 'glaze', 'hail', 'lightning', 'rain', 'rainbow', 'rime', 'sandstorm', 'snow']
 
 def prepare_image(img_path):
     """Preprocess the image for prediction"""
-    img = image.load_img(img_path, target_size=(100, 100))  # ResNet and MobileNet usually expect 224x224
+    img = image.load_img(img_path, target_size=(100, 100))  
     img_array = image.img_to_array(img)
-    img_array = np.expand_dims(img_array, axis=0)  # Add batch dimension
+    img_array = np.expand_dims(img_array, axis=0)  
     return img_array
 
 @app.route('/')
